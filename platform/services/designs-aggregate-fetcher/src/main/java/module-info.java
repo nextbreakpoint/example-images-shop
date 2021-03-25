@@ -15,8 +15,8 @@ module com.nextbreakpoint.blueprint.designsaggregatefetcher {
     requires com.fasterxml.jackson.databind;
     requires org.apache.logging.log4j;
     requires com.datastax.oss.driver.core;
-    requires jdk.compiler;
     requires java.sql;
     requires java.desktop;
+    requires jdk.compiler;
     opens com.nextbreakpoint.blueprint.designs.model to com.fasterxml.jackson.databind;
 }

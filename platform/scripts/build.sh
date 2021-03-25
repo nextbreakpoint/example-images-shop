@@ -96,20 +96,20 @@ if [ "$TEST" == "true" ]; then
 fi
 popd
 
-#pushd services/designs-event-consumer
-#if [ "$BUILD" == "true" ]; then
-#  sh build.sh $REPOSITORY $VERSION
-#fi
-#if [ "$TEST" == "true" ]; then
-#  mvn clean verify -Dminikube=true
-#fi
-#popd
+pushd services/designs-event-consumer
+if [ "$BUILD" == "true" ]; then
+  sh build.sh $REPOSITORY $VERSION
+fi
+if [ "$TEST" == "true" ]; then
+  mvn clean verify -Dminikube=true
+fi
+popd
 
-#pushd services/designs-tile-renderer
-#if [ "$BUILD" == "true" ]; then
-#  sh build.sh $REPOSITORY $VERSION
-#fi
-#if [ "$TEST" == "true" ]; then
-#  mvn clean verify -Dminikube=true
-#fi
-#popd
+pushd services/designs-tile-renderer
+if [ "$BUILD" == "true" ]; then
+  sh build.sh $REPOSITORY $VERSION
+fi
+if [ "$TEST" == "true" ]; then
+  mvn clean verify -Dminikube=true
+fi
+popd

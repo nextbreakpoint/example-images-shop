@@ -1,8 +1,6 @@
 module com.nextbreakpoint.blueprint.designscommandproducer {
     requires com.nextbreakpoint.blueprint.common.core;
     requires com.nextbreakpoint.blueprint.common.vertx;
-    requires com.nextbreakpoint.nextfractal.core;
-    requires com.nextbreakpoint.nextfractal.mandelbrot;
     requires io.vertx.core;
     requires io.vertx.web;
     requires io.vertx.web.openapi;

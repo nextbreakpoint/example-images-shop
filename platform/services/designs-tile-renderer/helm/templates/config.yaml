@@ -1,0 +1,39 @@
+{{- $fullname := include "service.fullname" . -}}
+{{- $name := include "service.name" . -}}
+{{- $chart := include "service.chart" . -}}
+{{- $root := . }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $root.Values.name | default "designs-tile-renderer" | quote }}
+  namespace: {{ $root.Release.Namespace | quote }}
+  labels:
+    chart: {{ $chart }}
+    release: {{ $root.Release.Name }}
+    heritage: {{ $root.Release.Service }}
+data:
+  config.json: |
+    {
+      "host_port": "8080",
+
+      "server_keystore_path": "/etc/keystore_server.jks",
+      "server_keystore_secret": "${KEYSTORE_SECRET}",
+
+      "jwt_keystore_path": "/etc/keystore_auth.jceks",
+      "jwt_keystore_type": "jceks",
+      "jwt_keystore_secret": "${KEYSTORE_SECRET}",
+
+      "origin_pattern": "https://{{ $root.Values.clientDomain | default "localhost" }}(:[0-9]+)?",
+
+      "cassandra_cluster": {{ $root.Values.datacenter | default "datacenter1" | quote }},
+      "cassandra_keyspace": "designs",
+      "cassandra_username": "${DATABASE_USERNAME}",
+      "cassandra_password": "${DATABASE_PASSWORD}",
+      "cassandra_contactPoints": "cassandra",
+      "cassandra_port": "9042",
+
+      "kafka_bootstrap_servers": "kafka:9092",
+      "kafka_group_id": "designs-tile-renderer",
+      "message_source": "service-designs",
+      "design_event_topic": "design-event"
+    }

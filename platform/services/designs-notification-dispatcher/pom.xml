@@ -59,14 +59,6 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>com.nextbreakpoint</groupId>
-            <artifactId>com.nextbreakpoint.nextfractal.core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.nextbreakpoint</groupId>
-            <artifactId>com.nextbreakpoint.nextfractal.mandelbrot</artifactId>
-        </dependency>
-        <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-kafka-client</artifactId>
         </dependency>

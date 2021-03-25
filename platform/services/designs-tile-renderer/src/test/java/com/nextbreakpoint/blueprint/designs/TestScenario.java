@@ -50,7 +50,7 @@ public class TestScenario {
             .withSecretArgs(secretArgs)
             .withHelmPath("../../helm")
             .withHelmArgs(helmArgs)
-            .withKubernetes()
+//            .withKubernetes()
             .withMinikube()
             .withCassandra()
             .withZookeeper()

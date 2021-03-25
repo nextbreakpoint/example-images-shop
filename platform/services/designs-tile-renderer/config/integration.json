@@ -1,0 +1,26 @@
+{
+  "host_port": "${DESIGNS_PORT}",
+
+  "server_keystore_path": "../../secrets/keystore_server.jks",
+  "server_keystore_secret": "${KEYSTORE_SECRET}",
+
+  "jwt_keystore_path": "../../secrets/keystore_auth.jceks",
+  "jwt_keystore_type": "jceks",
+  "jwt_keystore_secret": "${KEYSTORE_SECRET}",
+
+  "origin_pattern": "https://localhost(:[0-9]+)?",
+
+  "cassandra_cluster": "datacenter1",
+  "cassandra_keyspace": "designs",
+  "cassandra_username": "${DATABASE_USERNAME}",
+  "cassandra_password": "${DATABASE_PASSWORD}",
+  "cassandra_contactPoints": "${DATABASE_HOST}",
+  "cassandra_port": "9042",
+
+  "kafka_bootstrap_servers": "${KAFKA_HOST}:9093",
+  "kafka_group_id": "designs-tile-renderer",
+  "message_source": "service-designs",
+  "design_event_topic": "design-event",
+
+  "max_execution_time_in_millis": "30000"
+}

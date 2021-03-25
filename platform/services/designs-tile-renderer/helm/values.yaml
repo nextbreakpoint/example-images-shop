@@ -1,0 +1,26 @@
+# Default values.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: nextbreakpoint/designs-tile-renderer
+  tag: 1.0.0-1
+  pullPolicy: IfNotPresent
+  pullSecrets:
+
+annotations:
+
+strategy:
+  type: RollingUpdate
+
+resources:
+  requests:
+    memory: "576Mi"
+    cpu: "0.1"
+  limits:
+    memory: "576Mi"
+    cpu: "1.0"
+
+serviceAccount: default
+
+clientDomain:

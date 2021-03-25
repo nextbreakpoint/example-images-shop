@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>com.nextbreakpoint.blueprint.designs-command-producer</artifactId>
+    <artifactId>com.nextbreakpoint.blueprint.designs-tile-renderer</artifactId>
     <properties>
         <mainClass>com.nextbreakpoint.blueprint.designs.Verticle</mainClass>
     </properties>
@@ -22,6 +22,26 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>au.com.dius.pact.provider</groupId>
+                <artifactId>maven</artifactId>
+                <version>${pact-provider-maven.version}</version>
+                <executions>
+                    <execution>
+                        <id>publish</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>publish</goal>
+                        </goals>
+                        <configuration>
+                            <pactDirectory>${project.build.directory}/pacts</pactDirectory>
+                            <pactBrokerUrl>http://${pactbroker.host}:${pactbroker.port}</pactBrokerUrl>
+                            <skipPactPublish>false</skipPactPublish>
+                            <trimSnapshot>true</trimSnapshot>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${maven-jar-plugin.version}</version>
@@ -39,8 +59,20 @@
     </build>
     <dependencies>
         <dependency>
+            <groupId>com.nextbreakpoint</groupId>
+            <artifactId>com.nextbreakpoint.nextfractal.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.nextbreakpoint</groupId>
+            <artifactId>com.nextbreakpoint.nextfractal.mandelbrot</artifactId>
+        </dependency>
+        <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-kafka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-cassandra-client</artifactId>
         </dependency>
         <dependency>
             <groupId>au.com.dius.pact</groupId>
@@ -49,6 +81,16 @@
         </dependency>
         <dependency>
             <groupId>au.com.dius.pact.provider</groupId>
+            <artifactId>junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>au.com.dius.pact</groupId>
+            <artifactId>consumer</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>au.com.dius.pact.consumer</groupId>
             <artifactId>junit5</artifactId>
             <scope>test</scope>
         </dependency>

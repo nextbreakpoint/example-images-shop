@@ -1,0 +1,16 @@
+<settings>
+    <mirrors>
+        <mirror>
+            <id>nexus-maven-central</id>
+            <name>Nexus - Maven Central</name>
+            <url>http://192.168.64.12:38081/repository/maven-central</url>
+            <mirrorOf>*,!nexus</mirrorOf>
+        </mirror>
+        <mirror>
+            <id>nexus-maven-internal</id>
+            <name>Nexus - Maven Internal</name>
+            <url>http://192.168.64.12:38081/repository/maven-internal</url>
+            <mirrorOf>nexus</mirrorOf>
+        </mirror>
+    </mirrors>
+</settings>
